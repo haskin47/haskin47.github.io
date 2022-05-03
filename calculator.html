@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicholas Haskin, Point Buy Calculator</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Nicholas Haskin, Calculator</title>
+
+    <link rel="stylesheet" href="calc-style.css">
+    <script src="calc-calculate.js"></script>
 </head>
 <body>
    
@@ -19,14 +21,45 @@
     </nav>
 
     <hr>
-    <div class="main-body">
+    <div class="calc_back">
+        <div class="calc-grid">
 
-        <div class="TBD-project">
-            This is the page for my Point Buy Calculator project. This will likey require some Java to create the actual program.
+            <div class="output">
+                <div id="previous-op" class="previous-op"></div>
+                <div id="current-op" class="current-op"></div>
+            </div>
+
+            <button onClick="numpadClear()">AC</button>
+            <button onClick="numpadDel()">DEL</button>
+            <button onClick="numpadPercent()">%</button>
+            <button data-swap>+/-</button>
+
+            <button onClick="numpad1()">1</button>
+            <button onClick="numpad2()">2</button>
+            <button onClick="numpad3()">3</button>
+            <button onClick="numpadDiv()">÷</button>
+
+            <button onClick="numpad4()">4</button>
+            <button onClick="numpad5()">5</button>
+            <button onClick="numpad6()">6</button>
+            <button onClick="numpadMul()">x</button>
+
+            <button onClick="numpad7()">7</button>
+            <button onClick="numpad8()">8</button>
+            <button onClick="numpad9()">9</button>
+            <button onClick="numpadAdd()">+</button>
+
+            <button onClick="numpaddot()">.</button>
+            <button onClick="numpad0()">0</button>
+            <button onClick="numpadEqu()">=</button>
+            <button onClick="numpadSub()">-</button>
+
         </div>
-        
     </div>
     <hr>
+
+
+
 
     <footer>
         <ul>

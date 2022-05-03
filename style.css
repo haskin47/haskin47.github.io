@@ -33,8 +33,7 @@ nav ul li{
     color: #fff;
 }
 nav ul li:hover{
-    background: #fff;
-    color: #000;
+    background: black;
 }
 nav ul li a{
     text-decoration: none;
@@ -86,3 +85,5 @@ footer ul li{
     flex-direction: column;
     color: #fff;
 }
+
+
