@@ -52,7 +52,14 @@ class Calculator
     }
 
     chooseOperation(oper){
-        if(this.currentOp === ''){return;}
+        if(this.currentOp === '' && this.operation == undefined){return;}
+        if(this.currentOp === '' && this.operation != undefined){
+            this.previousOp.toString().slice(0, -1);
+            this.previousOp.toString().slice(0, -1);
+            this.operation = oper;
+            return;
+        }
+        
         if(this.previousOp !== ''){this.compute();}
         this.operation = oper;
         this.previousOp = this.currentOp; 
@@ -91,6 +98,16 @@ class Calculator
         }
         console.log("PROCESSING...");
         this.currentOp = computation;
+
+        //  cut off code, after computing. I'll worry about rounding later
+        if(computation.toString().length > 12){
+            for(let i = 0; i < computation.toString().length-12; i++){
+                this.currentOp = this.currentOp.toString().slice(0, -1);
+            }
+
+        }
+
+        
         this.operation = undefined;
         this.previousOp = '';
         this.justComputed = true;
@@ -102,6 +119,14 @@ class Calculator
         if(isNaN(curr)) {return;}
         console.log("Dividing by 100...");
         this.currentOp = curr/100;
+    }
+
+    NegPosSwap(){
+        var n = this.currentOp;
+        var op = this.currentOp -n -n;
+        console.log("Testing Swap:" + op);
+        this.currentOp = op;
+
     }
 
     updateDisplay(){
@@ -154,7 +179,11 @@ function numpadPercent(){
     calculator.divideByHundred();
     calculator.updateDisplay();
 }
-function numpadSwap(){}
+function numpadSwap(){
+    console.log("Swapping...");
+    calculator.NegPosSwap();
+    calculator.updateDisplay();
+}
 
 function numpadEqu(){
     console.log("Computing...");
