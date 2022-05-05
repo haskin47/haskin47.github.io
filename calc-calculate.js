@@ -1,12 +1,3 @@
-/*
-    Data-Number
-    Data-Operation
-    Data-AC
-    Data-DEL
-    Data-%
-    Data-Swap
-*/
-
 class Calculator
 {
    
@@ -14,7 +5,6 @@ class Calculator
         this.previousOpTextElement = previousOpTextElement;
         this.currentOpTextElement = currentOpTextElement;
         this.clear();
-        //this.updateDisplay()
     }
 
     clear(){
@@ -33,7 +23,6 @@ class Calculator
 
     appendNumber(number){
         if (number === '.' && this.currentOp.includes('.')){return;}
-        //  tinker with this later?
         if(this.currentOp.toString().length >= 10){return;}
         if(this.currentOp.toString().length == 1 && 
             this.currentOp.toString() == '0'){
@@ -150,13 +139,6 @@ class Calculator
 }
 
 
-/* unused?
-const numberButtons = document.querySelectorAll('[data-number]');
-const operationButtons = document.querySelectorAll('[data-operation]');
-const equalsButton = document.querySelector('[data-equals]');
-const delButton = document.querySelector('[data-DEL]');
-const acButton = document.querySelector('[data-AC]');*/
-
 const previousOpTextElement = document.getElementById("previous-op");
 const currentOpTextElement = document.getElementById("current-op");
 
@@ -267,7 +249,8 @@ function numpad0(){
 }
 function numpaddot(){
     console.log("pressing dot...")
-    if(calculator.currentOp == ''){ //  adds a 0 before the . if nothing is there to start.
+    if(calculator.currentOp == ''){ 
+        //  adds a 0 before the . if nothing is there to start.
         calculator.appendNumber(0);
         calculator.appendNumber('.');
         calculator.updateDisplay();
