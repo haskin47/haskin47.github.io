@@ -261,3 +261,82 @@ function numpaddot(){
     
     }
 }
+/*****/
+
+
+//  Key Detection
+
+document.addEventListener("keydown", function onPress(press){
+    if(press.key === "Enter") {numpadEqu();}
+
+    
+    //if(press.key === "1") {numpad1();}
+
+    switch(press.key){
+        case "Enter":   //  Equals
+            numpadEqu();
+            event.preventDefault();
+            break;
+        case "Backspace":    //  Clear
+            numpadClear();
+            break;
+        case "Delete":    //  Delete
+            numpadDel();
+            break;
+        case "%":    //  Percentage
+            numpadPercent();
+            break;
+        case "Control":    //  Swap
+            numpadSwap();
+            break;
+
+        case "/":    //  Divide
+            numpadDiv();
+            break;
+        case "*":    //  Multiply
+            numpadMul();
+            break;
+        case "+":    //  Addition
+            numpadAdd();
+            break;
+        case "-":    //  Subtraction
+            numpadSub();
+            break;
+
+        case ".":    //  Dot
+            numpaddot();
+            break;
+        case "0":    //  Zero
+            numpad0();
+            break;
+        case "1":    //  1
+            numpad1();
+            break;
+        case "2":    //  2
+            numpad2();
+            break;
+        case "3":    //  3
+            numpad3();
+            break;
+        case "4":    //  4
+            numpad4();
+            break;
+        case "5":    //  5
+            numpad5();
+            break;
+        case "6":    //  6
+            numpad6();
+            break;
+        case "7":    //  7
+            numpad7();
+            break;
+        case "8":    //  8
+            numpad8();
+            break;
+        case "9":    //  9
+            numpad9();
+            break;
+        
+
+    }
+})
