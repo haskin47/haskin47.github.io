@@ -64,20 +64,27 @@ nav ul li a{
     gap: 10px 5px;
 
 }
-.ability-score-title{
-    
-}
+
 .score-info{
     grid-column-start: 2;
 }
-.mod-info{
-    
-}
+
 
 .total-points{
     grid-column-start: 5;
 
 }
+
+.str-mod .str-race .str-points 
+.dex-mod .dex-race .dex-points 
+.con-mod .con-race .con-points 
+.int-mod .int-race .int-points 
+.wis-mod .wis-race .wis-points 
+.cha-mod .cha-race .cha-points {
+    /* Not working, unsure why :(*/
+    text-align: right;
+}
+
 
 /*********/
 footer{
