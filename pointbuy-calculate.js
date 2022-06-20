@@ -41,13 +41,25 @@ window.onload = function() {
     gamesystem.onchange = function() {
         console.log("System Changed: " + gamesystem.value);
         whatweplaying = gamesystem.value;
-        
+
         //  empty the scores
         strength.length = 1;
+        dexterity.length = 1;
+        constitution.length = 1;
+        intelligence.length = 1;
+        wisdom.length = 1;
+        charisma.length = 1;
+        
         var stupid2 = 1;
         var stupid = 9;
         for(var n in gameList[this.value]){
             strength.options[stupid2] = new Option(stupid,stupid);
+            dexterity.options[stupid2] = new Option(stupid,stupid);
+            constitution.options[stupid2] = new Option(stupid,stupid);
+            intelligence.options[stupid2] = new Option(stupid,stupid);
+            wisdom.options[stupid2] = new Option(stupid,stupid);
+            charisma.options[stupid2] = new Option(stupid,stupid);
+            
             stupid++; stupid2++;
         }
     };
@@ -100,12 +112,6 @@ function Update(){
 
     //console.log(str);
 }
-
-function RaceBonus(){
-    // add functionality later
-
-}
-
 function Modifier(score){
     m = "+0";
 
@@ -123,7 +129,6 @@ function Modifier(score){
     
     return m;
 }
-
 function Points(score){
     //console.log(whatweplaying);
 //  PATHFINDER 1E
@@ -156,5 +161,10 @@ function Points(score){
     }
 
     else return 0;
+
+}
+
+function RaceBonus(){
+    // add functionality later
 
 }
