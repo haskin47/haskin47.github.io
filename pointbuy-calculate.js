@@ -8,8 +8,10 @@ var gameList = {
 
 var dndRaceList = [
     "Dragonborn", "Hill Dwarf", "Mountain Dwarf", "High Elf", "Wood Elf",
-    "Dark Elf", "Forest Gnome", "Rock Gnome", "Half-Elf", "Half-Orc",
-    "Lightfoot Halfling", "Stout Halfling", "Human", "Variant Human", "Tiefling"
+    "Dark Elf", "Forest Gnome", "Rock Gnome", 
+    "Half-Elf - +1 to any two ability scores", "Half-Orc",
+    "Lightfoot Halfling", "Stout Halfling", "Human", 
+    "Variant Human - +1 to any two ability scores", "Tiefling"
 ];
 
 var pathfinderRaceList = [
@@ -88,7 +90,7 @@ window.onload = function() {
 
         if(whatweplaying == "D&D"){
             for(var n in dndRaceList){
-                race.options[race.options.length] = new Option(n);
+                race.options[race.options.length] = new Option(dndRaceList[n]);
             }
         }
         
@@ -251,6 +253,76 @@ function RaceBonus(){
                 dexRace = "+2";
                 chaRace = "+2";
                 strRace = "-2";
+                break;
+            
+        }
+    }
+
+    else if(whatweplaying == "D&D"){
+        switch(currentRace){
+            case "None":
+                console.log("Looping default");
+                break;
+            case "Dragonborn":
+                strRace = "+2";
+                chaRace = "+1";
+                break;
+            case "Hill Dwarf":
+                conRace = "+2";
+                wisRace = "+1";
+                break;
+            case "Mountain Dwarf":
+                strRace = "+2";
+                conRace = "+2";
+                break;
+            case "High Elf":
+                dexRace = "+2";
+                intRace = "+1";
+                break;
+            case "Wood Elf":
+                dexRace = "+2";
+                wisRace = "+1";
+                break;
+            case "Dark Elf":
+                dexRace = "+2";
+                chaRace = "+1";
+                break;
+            case "Forest Gnome":
+                intRace = "+2";
+                dexRace = "+1";
+                break;
+            case "Rock Gnome":
+                intRace = "+2";
+                conRace = "+1";
+                break;
+            case "Half-Elf - +1 to any two ability scores":
+                chaRace = "+2";
+                break;
+            case "Half-Orc":
+                strRace = "+2";
+                conRace = "+1";
+                break;
+            case "Lightfoot Halfling":
+                dexRace = "+2";
+                chaRace = "+1";
+                break;
+            case "Stout Halfling":
+                dexRace = "+2";
+                conRace = "+1";
+                break;
+            case "Human":
+                strRace = "+1";
+                dexRace = "+1";
+                conRace = "+1";
+                intRace = "+1";
+                wisRace = "+1";
+                chaRace = "+1";
+                break;
+            case "Variant Human - +1 to any two ability scores":
+                break;
+            case "Tiefling":
+                chaRace = "+2";
+                intRace = "+1";
                 break;
             
         }
