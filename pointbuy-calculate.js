@@ -6,6 +6,21 @@ var gameList = {
     "Pathfinder": ["9", "10", "11", "12", "13", "14", "15", "16", "17", "18"]
 };
 
+var dndRaceList = [
+    "Dragonborn", "Hill Dwarf", "Mountain Dwarf", "High Elf", "Wood Elf",
+    "Dark Elf", "Forest Gnome", "Rock Gnome", "Half-Elf", "Half-Orc",
+    "Lightfoot Halfling", "Stout Halfling", "Human", "Variant Human", "Tiefling"
+];
+
+var pathfinderRaceList = [
+    "Dwarf", 
+    "Elf", 
+    "Gnome", 
+    "Human - +2 to any ability score", 
+    "Half-Orc - +2 to any ability score", 
+    "Halfling", 
+    "Half-Elf - +2 to any ability score"
+];
 
 var str;
 var dex;
@@ -14,7 +29,11 @@ var int;
 var wis;
 var cha;
 
+var strRace = ""; var dexRace = ""; var conRace = "";
+var intRace = ""; var wisRace = ""; var chaRace = "";
 
+var currentRace = "None";
+var currentRaceStats = [];
 
 window.onload = function() {
  
@@ -24,12 +43,14 @@ window.onload = function() {
     console.log(gamesystem);
 
     
-    var strength = document.getElementById("str-score");;
-    var dexterity= document.getElementById("dex-score");;
-    var constitution= document.getElementById("con-score");;
-    var intelligence= document.getElementById("int-score");;
-    var wisdom= document.getElementById("wis-score");;
-    var charisma= document.getElementById("cha-score");;
+    var strength = document.getElementById("str-score");
+    var dexterity= document.getElementById("dex-score");
+    var constitution= document.getElementById("con-score");
+    var intelligence= document.getElementById("int-score");
+    var wisdom= document.getElementById("wis-score");
+    var charisma= document.getElementById("cha-score");
+
+    var race = document.getElementById("race");
 
     for(var x in gameList)
     {
@@ -49,6 +70,8 @@ window.onload = function() {
         intelligence.length = 1;
         wisdom.length = 1;
         charisma.length = 1;
+
+        race.length = 1;
         
         var stupid2 = 1;
         var stupid = 9;
@@ -62,7 +85,34 @@ window.onload = function() {
             
             stupid++; stupid2++;
         }
+
+        if(whatweplaying == "D&D"){
+            for(var n in dndRaceList){
+                race.options[race.options.length] = new Option(n);
+            }
+        }
+        
+        if(whatweplaying == "Pathfinder"){
+            for(var n in pathfinderRaceList){
+                race.options[race.options.length] = new Option(pathfinderRaceList[n]);
+            }
+        }
     };
+
+    race.onchange = function(){
+
+        strRace = ""; dexRace = ""; conRace = "";
+        intRace = ""; wisRace = ""; chaRace = "";
+        
+        for(var i = 0; i < race.options.length; i++){
+            if(race.options[i].selected == true){
+                currentRace = race.options[i].value;
+            }
+        }
+        
+        console.log(currentRace);
+
+    }
 
     //Update();
     setInterval(Update, 1000/10);
@@ -107,6 +157,9 @@ function Update(){
     document.getElementById("cha-points").innerHTML = Points(cha); sum += Points(cha);
 
     
+    RaceBonus();
+    
+
     document.getElementById("total-points").innerHTML = sum;
     sum = 0;
 
@@ -166,5 +219,47 @@ function Points(score){
 
 function RaceBonus(){
     // add functionality later
+    
 
+    if(whatweplaying == "Pathfinder"){
+        switch(currentRace){
+            case "None":
+                console.log("Looping default");
+                break;
+            case "Human":
+                break;
+            case "Half-Orc":
+                break;
+            case "Half-Elf":
+                break;
+            case "Dwarf":
+                conRace = "+2";
+                wisRace = "+2";
+                chaRace = "-2";
+                break;
+            case "Elf":
+                dexRace = "+2";
+                intRace = "+2";
+                conRace = "-2";
+                break;
+            case "Gnome":
+                conRace = "+2";
+                chaRace = "+2";
+                strRace = "-2";
+                break;
+            case "Halfling":
+                dexRace = "+2";
+                chaRace = "+2";
+                strRace = "-2";
+                break;
+            
+        }
+    }
+
+    document.getElementById("str-race").innerHTML = strRace;
+    document.getElementById("dex-race").innerHTML = dexRace;
+    document.getElementById("con-race").innerHTML = conRace;
+    document.getElementById("int-race").innerHTML = intRace;
+    document.getElementById("wis-race").innerHTML = wisRace;
+    document.getElementById("cha-race").innerHTML = chaRace;
 }
