@@ -78,13 +78,23 @@ window.onload = function() {
         var stupid2 = 1;
         var stupid = 9;
         for(var n in gameList[this.value]){
-            strength.options[stupid2] = new Option(stupid,stupid);
-            dexterity.options[stupid2] = new Option(stupid,stupid);
-            constitution.options[stupid2] = new Option(stupid,stupid);
-            intelligence.options[stupid2] = new Option(stupid,stupid);
-            wisdom.options[stupid2] = new Option(stupid,stupid);
-            charisma.options[stupid2] = new Option(stupid,stupid);
+            strength.options[stupid2] = new Option(stupid,stupid, false, false);
+            dexterity.options[stupid2] = new Option(stupid,stupid, false, false);
+            constitution.options[stupid2] = new Option(stupid,stupid, false, false);
+            intelligence.options[stupid2] = new Option(stupid,stupid, false, false);
+            wisdom.options[stupid2] = new Option(stupid,stupid, false, false);
+            charisma.options[stupid2] = new Option(stupid,stupid, false, false);
             
+
+            
+            if(stupid == 10 && whatweplaying == "Pathfinder"){
+                strength.options[stupid2].selected = true;
+                dexterity.options[stupid2].selected = true;
+                constitution.options[stupid2].selected = true;
+                intelligence.options[stupid2].selected = true;
+                wisdom.options[stupid2].selected = true;
+                charisma.options[stupid2].selected = true;
+            }
             stupid++; stupid2++;
         }
 
@@ -97,6 +107,7 @@ window.onload = function() {
         if(whatweplaying == "Pathfinder"){
             for(var n in pathfinderRaceList){
                 race.options[race.options.length] = new Option(pathfinderRaceList[n]);
+                
             }
         }
     };
